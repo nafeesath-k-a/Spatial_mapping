@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kochi — NDBI &amp; MNDWI Change (2018 → 2025)</title>
+<title>Kochi — Built-up and Surface-Water Change Analysis</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
 
@@ -13,13 +13,11 @@
     --ink:#2a2f36;
     --muted:#767b82;
     --line:#e5e8ec;
-    --line-soft:#f0f2f5;
     --bg:#ffffff;
-    --max:920px;
+    --max:960px;
   }
 
   *{box-sizing:border-box;margin:0;padding:0;}
-
   html{scroll-behavior:smooth;}
 
   body{
@@ -31,227 +29,173 @@
     padding:3rem 1.5rem 5rem;
     -webkit-font-smoothing:antialiased;
   }
+  .wrap{max-width:var(--max);margin:0 auto;}
 
-  .wrap{
-    max-width:var(--max);
-    margin:0 auto;
-  }
-
-  /* ── Back link ── */
+  /* Back link */
   .back-link{
-    display:inline-flex;
-    align-items:center;
-    gap:.35rem;
-    font-size:.8rem;
-    color:var(--muted);
-    margin-bottom:2.5rem;
-    text-decoration:none;
-    letter-spacing:.01em;
-    transition:color .15s;
+    display:inline-flex;align-items:center;gap:.35rem;
+    font-size:.8rem;color:var(--muted);margin-bottom:2.5rem;
+    text-decoration:none;transition:color .15s;
   }
   .back-link:hover{color:var(--accent);text-decoration:none;}
-  .back-link::before{content:"←";font-weight:400;margin-right:.1rem;}
+  .back-link::before{content:"←";margin-right:.1rem;}
 
-  /* ── Title block ── */
+  /* Title */
   .title-block{
-    padding-bottom:2rem;
-    margin-bottom:2.5rem;
+    padding-bottom:2rem;margin-bottom:2.5rem;
     border-bottom:1px solid var(--line);
   }
-
   h1{
     font-family:"Source Serif 4",Georgia,serif;
-    font-size:2.1rem;
-    font-weight:600;
-    color:#111418;
-    line-height:1.25;
-    letter-spacing:-.01em;
-    margin-bottom:1.25rem;
+    font-size:2.1rem;font-weight:600;color:#111418;
+    line-height:1.25;letter-spacing:-.01em;margin-bottom:1.25rem;
   }
-  h1 .arrow{color:var(--accent);font-weight:400;}
-
   .lede{
-    font-size:1.05rem;
-    color:#4b5158;
-    line-height:1.8;
-    max-width:720px;
+    font-size:1.05rem;color:#4b5158;line-height:1.8;max-width:780px;
   }
 
-  /* ── Sections with numbered headings ── */
-  section{
-    margin-bottom:3rem;
-  }
-
+  /* Sections */
+  section{margin-bottom:3.5rem;}
   h2{
     font-family:"Source Serif 4",Georgia,serif;
-    font-size:1.35rem;
-    font-weight:600;
-    color:#111418;
-    line-height:1.35;
-    margin-bottom:1.25rem;
-    display:flex;
-    align-items:baseline;
-    gap:.75rem;
+    font-size:1.35rem;font-weight:600;color:#111418;
+    line-height:1.35;margin-bottom:1.5rem;
+    display:flex;align-items:baseline;gap:.75rem;
   }
   h2 .num{
     font-family:"Source Sans 3",sans-serif;
-    font-size:.85rem;
-    font-weight:600;
-    color:var(--accent);
-    letter-spacing:.05em;
-    min-width:1.75rem;
-    padding-top:.15rem;
+    font-size:.85rem;font-weight:600;color:var(--accent);
+    letter-spacing:.05em;min-width:1.75rem;padding-top:.15rem;
   }
 
   p{
-    margin-bottom:1.15rem;
-    font-size:1rem;
-    line-height:1.85;
-    color:#2a2f36;
+    margin-bottom:1.15rem;font-size:1rem;
+    line-height:1.85;color:#2a2f36;
   }
   p:last-child{margin-bottom:0;}
-
   strong{color:#111418;font-weight:600;}
   em{font-style:italic;color:#4b5158;}
 
   a{
-    color:var(--accent);
-    text-decoration:none;
+    color:var(--accent);text-decoration:none;
     border-bottom:1px solid rgba(42,82,152,.25);
     transition:border-color .15s,color .15s;
   }
-  a:hover{
-    color:#1a3a78;
-    border-bottom-color:var(--accent);
-  }
+  a:hover{color:#1a3a78;border-bottom-color:var(--accent);}
 
-  /* ── Two-column figure + text ── */
-  .fig-text-grid{
+  /* Two-column image + text */
+  .grid{
     display:grid;
-    grid-template-columns:minmax(320px, 420px) 1fr;
-    gap:2.75rem;
+    grid-template-columns:minmax(340px, 480px) 1fr;
+    gap:2.5rem;
     align-items:start;
-    margin:2.5rem 0 3rem;
+    margin:2.5rem 0;
   }
-
-  .fig-sticky{
-    position:sticky;
-    top:2rem;
+  .grid.reverse{
+    grid-template-columns:1fr minmax(340px, 480px);
   }
+  .grid.reverse > figure{order:2;}
+  .grid.reverse > div{order:1;}
 
-  figure{
-    margin:0;
-    padding:0;
-  }
-
+  figure{margin:0;}
   figure img{
-    width:100%;
-    height:auto;
-    border:1px solid var(--line);
-    border-radius:6px;
-    display:block;
-    background:#fafbfc;
+    width:100%;height:auto;
+    border:1px solid var(--line);border-radius:6px;
+    display:block;background:#fafbfc;
   }
-
   figcaption{
-    font-size:.82rem;
-    color:var(--muted);
-    margin-top:.85rem;
-    font-style:italic;
-    line-height:1.65;
+    font-size:.82rem;color:var(--muted);
+    margin-top:.85rem;font-style:italic;line-height:1.65;
   }
 
-  /* ── Table ── */
+  .sticky{position:sticky;top:2rem;}
+
+  /* Callout */
+  .callout{
+    background:var(--accent-soft);
+    border-left:3px solid var(--accent);
+    padding:1.15rem 1.4rem;
+    margin:1.75rem 0;
+    font-size:.95rem;line-height:1.8;
+    border-radius:0 4px 4px 0;
+  }
+  .callout b{color:#111418;font-weight:600;}
+
+  /* Note / limitation box */
+  .note{
+    background:#fafbfc;
+    border:1px solid var(--line);
+    border-left:3px solid #b8860b;
+    border-radius:0 4px 4px 0;
+    padding:1rem 1.25rem;
+    margin:1.75rem 0;
+    font-size:.9rem;line-height:1.75;
+    color:#4b5158;
+  }
+  .note b{color:#111418;font-weight:600;}
+
+  /* Table */
   table{
-    border-collapse:collapse;
-    width:100%;
-    margin:1.5rem 0 0;
-    font-size:.92rem;
+    border-collapse:collapse;width:100%;
+    margin:1.5rem 0 0;font-size:.92rem;
   }
   caption{
-    caption-side:top;
-    text-align:left;
-    font-size:.82rem;
-    color:var(--muted);
-    margin-bottom:.6rem;
-    font-style:italic;
+    caption-side:top;text-align:left;
+    font-size:.82rem;color:var(--muted);
+    margin-bottom:.6rem;font-style:italic;
   }
   th,td{
-    border:none;
-    border-bottom:1px solid var(--line);
-    padding:.75rem .9rem;
-    text-align:left;
+    border:none;border-bottom:1px solid var(--line);
+    padding:.75rem .9rem;text-align:left;
   }
   th{
     background:var(--accent-soft);
-    font-weight:600;
-    font-size:.83rem;
-    color:#111418;
-    letter-spacing:.02em;
+    font-weight:600;font-size:.83rem;
+    color:#111418;letter-spacing:.02em;
     text-transform:uppercase;
   }
   tr:last-child td{border-bottom:none;}
   td.num{font-variant-numeric:tabular-nums;text-align:right;}
   tbody tr:hover td{background:#fafbfd;}
 
-  /* ── Callout ── */
-  .callout{
-    background:var(--accent-soft);
-    border-left:3px solid var(--accent);
-    padding:1.15rem 1.4rem;
-    margin:1.75rem 0;
-    font-size:.95rem;
-    color:#2a2f36;
-    line-height:1.8;
-    border-radius:0 4px 4px 0;
+  /* Bullet list */
+  .bullets{list-style:none;margin:1rem 0;padding:0;}
+  .bullets li{
+    position:relative;
+    padding:.5rem 0 .5rem 1.5rem;
+    font-size:.98rem;line-height:1.8;
+    border-bottom:1px solid var(--line);
   }
-  .callout b{color:#111418;font-weight:600;}
+  .bullets li:last-child{border-bottom:none;}
+  .bullets li::before{
+    content:"—";
+    position:absolute;left:0;
+    color:var(--accent);font-weight:600;
+  }
 
-  /* ── Methods block ── */
-  .methods{
-    background:#fafbfc;
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:1.5rem 1.75rem;
-    font-size:.92rem;
-    line-height:1.85;
-    color:#3a3f45;
-  }
-  .methods strong{
-    display:inline-block;
-    min-width:110px;
-    color:#111418;
-  }
-  .methods br{line-height:2.2;}
-
-  /* ── Footer ── */
+  /* Footer */
   .foot{
-    margin-top:4rem;
-    padding-top:1.75rem;
+    margin-top:4rem;padding-top:1.75rem;
     border-top:1px solid var(--line);
-    font-size:.82rem;
-    color:var(--muted);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:1rem;
+    font-size:.82rem;color:var(--muted);
+    display:flex;justify-content:space-between;
+    flex-wrap:wrap;gap:1rem;
   }
   .foot a{color:var(--muted);border:none;}
   .foot a:hover{color:var(--accent);}
 
-  /* ── Mobile ── */
+  /* Mobile */
   @media(max-width:820px){
     body{padding:2rem 1.25rem 3rem;font-size:16px;}
     h1{font-size:1.65rem;}
     h2{font-size:1.2rem;}
-    .fig-text-grid{
+    .grid, .grid.reverse{
       grid-template-columns:1fr;
       gap:1.5rem;
     }
-    .fig-sticky{position:static;}
-    .lede{font-size:1rem;}
-    .methods strong{min-width:auto;display:block;margin-top:.5rem;}
-    .methods br{line-height:1.8;}
+    .grid.reverse > figure{order:1;}
+    .grid.reverse > div{order:2;}
+    .sticky{position:static;}
   }
 
   @media(max-width:480px){
@@ -269,211 +213,432 @@
     Back to portfolio
   </a>
 
-  <!-- ================= TITLE BLOCK ================= -->
+  <!-- ================= TITLE ================= -->
   <header class="title-block">
-    <h1>What NDBI and MNDWI Tell Us About Kochi <span class="arrow">(2018 → 2025)</span></h1>
+    <h1>Built-up and Surface-Water Change in Kochi</h1>
     <p class="lede">
-      A satellite-based comparison of built-up expansion and surface-water stability in the
-      Kochi Corporation area, using Sentinel-2 Surface Reflectance imagery over the same
-      January–March window in 2018 and 2025.
+      A satellite-based analysis of urban expansion and surface-water stability
+      using Sentinel-2 imagery over the Kochi Corporation area, comparing the
+      same January–March window in 2018 and 2025.
     </p>
   </header>
 
-  <!-- ================= 1. MEASURES + FIGURE ================= -->
+  <!-- ================= INTRO ================= -->
   <section>
-    <h2><span class="num">01</span>The Two Measures</h2>
+    <p>
+      Kochi is a coastal city in Kerala, India, defined by a distinctive
+      network of backwaters, canals, and islands that shape its urban form.
+      Like many growing Indian metros, it faces pressure to expand — but unlike
+      inland cities, expansion here has to negotiate an unusually water-rich
+      landscape. This analysis asks a simple question: <strong>between 2018 and
+      2025, did Kochi grow into its water bodies, or did it densify on dry
+      land?</strong>
+    </p>
+    <p>
+      To answer this, we use two satellite-derived indices — NDBI for built-up
+      surfaces, and MNDWI for water — computed over the same seasonal window
+      in both years. Both indices are cheap to compute, comparable across years,
+      and interpretable. They tell complementary stories about the same
+      landscape.
+    </p>
+  </section>
 
-    <div class="fig-text-grid">
+  <!-- ================= 01 · MEASURES ================= -->
+  <section>
+    <h2><span class="num">01</span>What Are NDBI and MNDWI?</h2>
 
-      <figure class="fig-sticky">
-        <img src="Kochi_NDBI_MNDWI_wards_labelled.gif"
-             alt="Animated comparison of NDBI and MNDWI between 2018 and 2025 over Kochi">
+    <p>
+      Remote sensing indices are simple arithmetic combinations of satellite
+      bands, designed to make a specific surface type stand out. Both indices
+      used here follow the same underlying idea: contrast one wavelength a
+      material <em>reflects strongly</em> against another it
+      <em>reflects weakly</em>, then normalise the result to a −1 to +1 range.
+    </p>
+
+    <p>
+      <strong>NDBI (Normalized Difference Built-up Index)</strong>, proposed by
+      Zha et al. (2003), combines the shortwave-infrared band (SWIR1) with the
+      near-infrared band (NIR): <em>(B11 − B8) / (B11 + B8)</em>. Built-up
+      surfaces — concrete, asphalt, roofs — reflect strongly in SWIR and weakly
+      in NIR, producing positive values; vegetation and water produce negative
+      ones. The value behaves like a per-pixel "concrete-ness score."
+    </p>
+
+    <p>
+      <strong>MNDWI (Modified Normalized Difference Water Index)</strong> has a
+      longer history. McFeeters (1996) first exploited the near-infrared (NIR)
+      and green bands of Landsat MSS data to propose the Normalized Difference
+      Water Index (NDWI), which effectively highlighted water and suppressed
+      soil and vegetation — but it <em>failed to separate water from built-up
+      areas</em>, since concrete and water both reflect little NIR. Xu (2006)
+      addressed this by replacing NIR with SWIR1, giving the Modified NDWI:
+      <em>(B3 − B11) / (B3 + B11)</em>. Water absorbs almost all SWIR while
+      reflecting green light, so it scores strongly positive; built-up and dry
+      land score negative. MNDWI is now the standard water index for urban
+      areas. (Jiang et al., 2021, extended this line of work further with
+      automated water indices designed for Sentinel-2 imagery, including
+      handling of mountain shadows.)
+    </p>
+
+    <h3 style="font-family:'Source Serif 4',Georgia,serif;font-size:1.05rem;font-weight:600;color:#111418;margin:1.75rem 0 .75rem;">
+      Known limitations
+    </h3>
+
+    <ul class="bullets">
+      <li>
+        <strong>Resolution mismatch:</strong> NDBI uses B8 (10 m) and B11 (20 m);
+        MNDWI uses B3 (10 m) and B11 (20 m). Earth Engine resamples B11 to 10 m,
+        introducing a small approximation.
+      </li>
+      <li>
+        <strong>Bare soil confusion:</strong> dry soil can produce positive NDBI
+        values similar to built-up surfaces, occasionally inflating the built-up
+        signal in newly cleared areas.
+      </li>
+      <li>
+        <strong>Water–shadow confusion:</strong> MNDWI can misclassify deep
+        terrain shadows as water in hilly scenes — less of an issue in Kochi's
+        flat coastal terrain.
+      </li>
+      <li>
+        <strong>Seasonal sensitivity:</strong> indices shift with soil moisture,
+        rainfall, and vegetation phenology. Comparing different seasons produces
+        noise; comparing the same season produces signal.
+      </li>
+      <li>
+        <strong>Mixed pixels:</strong> at 10 m resolution, a single pixel may
+        straddle a rooftop, a tree, and a road, producing an average value that
+        describes none of them well.
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= 02 · STUDY AREA ================= -->
+  <section>
+    <h2><span class="num">02</span>Study Area — Kochi Corporation</h2>
+
+    <p>
+      The analysis covers the administrative boundary of the
+      <a href="https://kochicorporation.lsgkerala.gov.in/en/map/299" target="_blank">
+      Kochi Municipal Corporation</a>, Kerala's largest urban local body. Kochi's
+      geography is defined by the Vembanad backwater system — a network of
+      lagoons, canals, and islands that surrounds and penetrates the city.
+      Roughly 76 wards make up the corporation, spread across the mainland,
+      the islands (Willingdon, Vypin, Mulavukad), and the southern peninsula.
+    </p>
+
+    <p>
+      The corporation boundary and ward polygons used in this analysis were
+      sourced from the
+      <a href="https://github.com/datameet/Municipal_Spatial_Data/tree/master/Kochi" target="_blank">
+      Datameet Municipal Spatial Data repository</a> on GitHub — a community-curated
+      open dataset of Indian municipal boundaries. Credit goes to the Datameet
+      contributors for maintaining and sharing this resource.
+    </p>
+
+    <div class="note">
+      <b>Note on the source data:</b> three ward entries in the Datameet
+      GeoJSON carry polygon areas below 1 m² — clearly digitisation errors
+      rather than genuine administrative units. These wards (Cheralai,
+      Edakochi South, and Kathrukadavu) are excluded from the ward-level
+      statistics below, as too few valid 10 m pixels fall within their
+      boundaries to produce reliable averages. All ward-level results are
+      based on the remaining 68 wards.
+    </div>
+  </section>
+
+  <!-- ================= 03 · NDBI RESULTS ================= -->
+  <section>
+    <h2><span class="num">03</span>Built-up Change — NDBI</h2>
+
+    <div class="grid">
+
+      <figure class="sticky">
+        <img src="Kochi_NDBI_labelled.gif"
+             alt="Animated NDBI change in Kochi, 2018 vs 2025">
         <figcaption>
-          <b>Figure 1.</b> Four-frame comparison of NDBI (red = built-up) and MNDWI
-          (teal = water) in 2018 and 2025. Ward boundaries are overlaid in yellow,
-          with ward names at each polygon centroid.
+          <b>Figure 1.</b> NDBI in 2018 and 2025 over the Kochi Corporation.
+          Red indicates built-up surfaces (concrete, asphalt, roofs);
+          blue indicates vegetation and water. Ward boundaries are overlaid
+          in yellow. The two frames alternate every 3 seconds.
         </figcaption>
       </figure>
 
       <div>
         <p>
-          <strong>NDBI (Normalized Difference Built-up Index)</strong> is a simple
-          satellite-derived number that tells us how "built-up" a piece of land looks.
-          It compares how much shortwave-infrared light a surface reflects versus
-          near-infrared light — concrete, asphalt, and rooftops reflect strongly in
-          shortwave-infrared but weakly in near-infrared, so built-up areas get positive
-          NDBI values, while vegetation and water get negative values. Because the index
-          runs from roughly −1 to +1, a pixel's NDBI value is effectively a
-          "concrete-ness score" — higher is more urban.
+          Across the corporation, the mean NDBI rose from
+          <strong>−0.0654 in 2018 to −0.0427 in 2025</strong> — an increase of
+          <strong>+0.0228</strong>. The negative baseline reflects Kochi's
+          unusual land-cover mix: the backwaters, canals, and extensive coconut
+          and mangrove vegetation pull the city-wide average toward the
+          negative side. What matters is the direction of change, not the
+          absolute value.
         </p>
+
         <p>
-          <strong>MNDWI (Modified Normalized Difference Water Index)</strong> does the
-          same kind of trick but for water: it compares green light reflectance against
-          shortwave-infrared reflectance, and because water absorbs shortwave-infrared
-          almost completely while reflecting green light, water bodies get strongly
-          positive values, and dry land — especially built-up areas — gets negative
-          values. Together, the two indices act like two different lenses on the same
-          landscape: one highlights where the city has been poured in concrete, the
-          other highlights where water sits on the surface.
+          A +0.0228 shift is small in absolute terms but consistent with the
+          rate of change documented for other growing Indian metros over
+          comparable periods. At the pixel level, this manifests as new
+          red-tinted patches appearing in the 2025 frame — concentrated
+          primarily in the eastern and north-eastern suburbs.
         </p>
+
+        <table>
+          <caption>Mean NDBI over the Kochi Corporation boundary (Jan–Mar).</caption>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Mean NDBI</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2018</td>
+              <td class="num">−0.0654</td>
+              <td class="num">—</td>
+            </tr>
+            <tr>
+              <td>2025</td>
+              <td class="num">−0.0427</td>
+              <td class="num"><b>+0.0228</b></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </div>
   </section>
 
-  <!-- ================= 2. METHOD ================= -->
+  <!-- ================= 04 · MNDWI RESULTS ================= -->
   <section>
-    <h2><span class="num">02</span>What We Did</h2>
+    <h2><span class="num">04</span>Water Change — MNDWI</h2>
 
-    <p>
-      Using cloud-free Sentinel-2 satellite images from the <strong>same time of year
-      (January to March)</strong> in <strong>2018 and 2025</strong>, we computed both
-      indices pixel-by-pixel over the Kochi Corporation area, then took the
-      <strong>average across the whole city</strong> for each year.
-    </p>
+    <div class="grid reverse">
 
-    <p>
-      Taking the same seasonal window matters — Kochi's monsoon dramatically changes how
-      much water is visible in any given month, so comparing a dry-season image to a
-      monsoon image would show seasonal noise rather than real change. By sticking to
-      Jan–Mar in both years, any difference we see reflects actual land-cover change, not
-      weather. We then computed the <strong>change</strong> for each index by subtracting
-      the 2018 value from the 2025 value — a positive change means the index went up
-      (more built-up, or more water), and a negative change means it went down.
-    </p>
+      <figure class="sticky">
+        <img src="Kochi_MNDWI_labelled.gif"
+             alt="Animated MNDWI change in Kochi, 2018 vs 2025">
+        <figcaption>
+          <b>Figure 2.</b> MNDWI in 2018 and 2025 over the same area.
+          Teal indicates water; brown indicates dry land and built-up
+          surfaces. The same ward boundaries are overlaid for reference.
+        </figcaption>
+      </figure>
+
+      <div>
+        <p>
+          The city-wide mean MNDWI barely moved:
+          <strong>−0.1932 in 2018 to −0.1890 in 2025</strong> — a change of
+          only <strong>+0.0042</strong>. This is essentially flat. The strongly
+          negative baseline is expected: most of the corporation is land, not
+          water, so the area-weighted average will always lean negative even
+          though the backwaters and canals are locally dominant features.
+        </p>
+
+        <p>
+          The near-zero change is the more interesting finding.
+          <strong>At the corporation scale, surface water appears to have been
+          stable between 2018 and 2025</strong> — gains in some places balanced
+          losses in others. This does not mean no water changed; individual
+          canals may have been filled or widened, and seasonal ponds come and
+          go. But there is no evidence of a systematic, city-wide retreat of
+          water bodies.
+        </p>
+
+        <table>
+          <caption>Mean MNDWI over the Kochi Corporation boundary (Jan–Mar).</caption>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Mean MNDWI</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2018</td>
+              <td class="num">−0.1932</td>
+              <td class="num">—</td>
+            </tr>
+            <tr>
+              <td>2025</td>
+              <td class="num">−0.1890</td>
+              <td class="num">+0.0042</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
   </section>
 
-  <!-- ================= 3. RESULTS ================= -->
+  <!-- ================= 05 · WARD-LEVEL ================= -->
   <section>
-    <h2><span class="num">03</span>What the Numbers Mean for Kochi</h2>
+    <h2><span class="num">05</span>Where the Change Concentrated</h2>
 
     <p>
-      Our results showed that the average NDBI over Kochi went from
-      <strong>−0.0654 in 2018 to −0.0427 in 2025</strong>, a change of
-      <strong>+0.0228</strong>. At first glance, the negative values might look strange —
-      surely a city should show positive built-up values? But Kochi is a coastal city
-      dominated by the Vembanad backwaters, the Periyar river, its canals, and extensive
-      coconut and mangrove vegetation, all of which pull the city-wide average toward the
-      negative side. What matters is not the absolute value but the
-      <strong>direction and magnitude of the change</strong>.
+      Corporation-wide averages hide spatial variation. The maps below show how
+      mean NDBI change and mean MNDWI change vary across the 68 analysable
+      wards. Wards are numbered at their centroids; the legend below the maps
+      lists each number against its ward name.
     </p>
 
-    <p>
-      A +0.0228 rise is a clear, consistent signal: Kochi's land surface became
-      <strong>measurably more built-up over the seven-year period</strong>. This is the
-      same order of magnitude that published studies report for other growing Indian
-      metros, so it fits Kochi's documented pattern of urban expansion along the
-      Kakkanad, Edappally, and Vyttila corridors.
-    </p>
+    <figure style="margin:2rem 0;">
+      <img src="Kochi_ward_change_full.png"
+           alt="Ward-level NDBI and MNDWI change, with numbered legend and footnote">
+      <figcaption>
+        <b>Figure 3.</b> Ward-level mean NDBI change (left) and mean MNDWI
+        change (right), with ward numbers at each centroid. The legend
+        below the maps lists every numbered ward. Areas not coloured inside
+        the corporation boundary are the three excluded wards, whose
+        polygons in the source GeoJSON are effectively zero-area.
+      </figcaption>
+    </figure>
 
-    <p>
-      The <strong>MNDWI</strong>, on the other hand, barely moved:
-      <strong>−0.1932 in 2018 to −0.1890 in 2025</strong>, a change of only
-      <strong>+0.0042</strong>. The strongly negative baseline is expected — most of the
-      corporation's area is land, not water, so the city-wide average is naturally
-      negative even though Kochi's backwaters and canals are locally dominant features.
-      The near-zero change is the more interesting story: <strong>at the scale of the
-      entire corporation, surface water appears to have been essentially stable between
-      the two years</strong>.
-    </p>
-
-    <p>
-      This does not mean no water changed — individual canals may have been filled in
-      while others were restored or widened, and seasonal ponds come and go — but the
-      gains and losses appear to have largely cancelled out when averaged across the
-      whole city.
-    </p>
-
-    <table>
-      <caption>Table 1. Mean index values over the Kochi Corporation boundary (Jan–Mar).</caption>
-      <thead>
-        <tr>
-          <th>Index</th>
-          <th>2018</th>
-          <th>2025</th>
-          <th>Change (2025 − 2018)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>NDBI <em>(built-up)</em></td>
-          <td class="num">−0.0654</td>
-          <td class="num">−0.0427</td>
-          <td class="num"><b>+0.0228</b></td>
-        </tr>
-        <tr>
-          <td>MNDWI <em>(water)</em></td>
-          <td class="num">−0.1932</td>
-          <td class="num">−0.1890</td>
-          <td class="num">+0.0042</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- ================= 4. DISCUSSION ================= -->
-  <section>
-    <h2><span class="num">04</span>The Real Takeaway</h2>
-
-    <p>
-      Read together, the two indices tell a coherent story about Kochi's recent urban
-      trajectory. The city's built-up footprint grew modestly but unmistakably
-      (+0.0228 in NDBI), while the overall water signal stayed flat (+0.0042 in MNDWI).
-      This combination — positive NDBI change, negligible MNDWI change — suggests that
-      <strong>Kochi's recent growth has come primarily through infill and densification
-      on already-dry land, rather than through large-scale reclamation of its backwaters
-      and canals</strong>.
-    </p>
-
-    <p>
-      If water bodies had been systematically converted to built-up surfaces, we would
-      have seen MNDWI drop while NDBI rose, because the same pixels that lose water gain
-      concrete. That is not what the numbers show.
-    </p>
-
-    <div class="callout">
-      <b>Key finding:</b> Kochi is densifying on dry land while holding the line on its
-      water bodies at the corporation scale — a notably more sustainable growth pattern
-      than what has been documented in several other Indian coastal cities.
+    <div class="note">
+      <b>Note on omitted wards:</b> three ward entries — Cheralai, Edakochi
+      South, and Kathrukadavu — were excluded from the ward-level statistics.
+      Their polygon areas in the source file are less than 1 m², indicating
+      digitisation errors rather than genuine small wards. Because no 10 m
+      Sentinel-2 pixel fits inside these sliver polygons, reliable averages
+      could not be computed. The 68 remaining wards cover the vast majority
+      of the corporation's inhabited area.
     </div>
 
     <p>
-      Instead, Kochi appears to be growing inwards — filling gaps in its existing urban
-      fabric, adding floors, densifying neighborhoods — while largely holding the line on
-      its water bodies at the corporation scale. This is a notably more sustainable
-      pattern of urban growth than what has been documented in several other Indian
-      coastal cities, and it is the kind of result that makes the Kochi case worth
-      discussing in the broader literature on urban-water interactions in rapidly growing
-      South Asian cities.
-    </p>
-
-    <p>
-      The change maps generated from this analysis — showing pixel-level NDBI and MNDWI
-      differences — allow us to move beyond the city-wide average and see exactly
-      <strong>where</strong> these changes are concentrated. The strongest NDBI increases
-      typically appear in the eastern and north-eastern suburbs, matching the known
-      geography of Kochi's newer residential and commercial development, while the
-      backwater margins show the most variable MNDWI signals. Together, the maps and the
-      summary statistics give a complete picture: Kochi is a city that is clearly still
-      growing, but doing so without — at least between 2018 and 2025 — substantially
-      sacrificing its defining water landscape at the scale of the whole corporation.
+      The ward-level pattern reinforces the corporation-wide story. The
+      strongest NDBI increases cluster in the eastern and north-eastern
+      wards — Kakkanad, Edappally, Vyttila — where Kochi's newer residential
+      and commercial development has been concentrated. Wards along the
+      backwater margins show the most variable MNDWI signals, with gains and
+      losses that cancel out at the city scale.
     </p>
   </section>
 
-  <!-- ================= 5. METHODS ================= -->
+  <!-- ================= 06 · OBSERVATIONS & SUGGESTIONS ================= -->
   <section>
-    <h2><span class="num">05</span>Methods &amp; Data</h2>
+    <h2><span class="num">06</span>Observations &amp; Suggestions</h2>
 
-    <div class="methods">
-      <strong>Data:</strong> Copernicus Sentinel-2 Surface Reflectance Harmonized
-      (Level-2A), bands B3 (green), B4 (red), B8 (NIR), B11 (SWIR-1). Cloud and shadow
-      masked using the Scene Classification Layer (SCL).<br>
-      <strong>Window:</strong> 1 January – 31 March for both 2018 and 2025.<br>
-      <strong>Compositing:</strong> pixel-wise median of cloud-free scenes
-      (25 scenes in 2018; 53 in 2025).<br>
-      <strong>Indices:</strong> NDBI = (B11 − B8) / (B11 + B8);
+    <h3 style="font-family:'Source Serif 4',Georgia,serif;font-size:1.05rem;font-weight:600;color:#111418;margin:1.5rem 0 .75rem;">
+      What the analysis shows
+    </h3>
+
+    <ul class="bullets">
+      <li>
+        Built-up surfaces expanded measurably across Kochi between 2018 and
+        2025, with a mean NDBI increase of +0.0228 — consistent with the pace
+        of urban growth reported for comparable Indian metros.
+      </li>
+      <li>
+        At the corporation scale, surface water was stable: the mean MNDWI
+        change was +0.0042, effectively zero. Localized losses and gains
+        balanced out.
+      </li>
+      <li>
+        The combination of rising NDBI and flat MNDWI suggests that growth
+        has been <em>infill-dominated</em> — new construction on already-dry
+        land — rather than reclamation-driven.
+      </li>
+      <li>
+        Spatially, built-up growth concentrates in the eastern and
+        north-eastern suburbs, mirroring Kochi's documented expansion
+        corridors.
+      </li>
+    </ul>
+
+    <h3 style="font-family:'Source Serif 4',Georgia,serif;font-size:1.05rem;font-weight:600;color:#111418;margin:1.75rem 0 .75rem;">
+      What this implies for policy
+    </h3>
+
+    <div class="callout">
+      <b>Key finding:</b> Kochi is densifying on dry land while holding the
+      line on its water bodies at the corporation scale — a notably more
+      sustainable growth pattern than what has been documented in several
+      other Indian coastal cities, where large-scale reclamation has often
+      accompanied urban expansion.
+    </div>
+
+    <ul class="bullets">
+      <li>
+        <strong>Protect what's working:</strong> the current balance between
+        built-up growth and water preservation is unusual and worth defending.
+        Continued monitoring can catch any shift toward reclamation early.
+      </li>
+      <li>
+        <strong>Focus infrastructure in growth wards:</strong> eastern and
+        north-eastern wards are absorbing most of the built-up increase.
+        Targeting transport, drainage, and utility investments there will
+        match demand.
+      </li>
+      <li>
+        <strong>Prioritize canal and backwater monitoring:</strong> ward-level
+        MNDWI variation is high near the water margins. A finer-scale (5 m)
+        water-mapping effort would clarify which canals are shrinking and
+        which are being maintained.
+      </li>
+      <li>
+        <strong>Formalize ward-level monitoring:</strong> three wards have
+        digitisation errors in their source polygons. These should be corrected
+        so future analyses can include them.
+      </li>
+    </ul>
+
+    <h3 style="font-family:'Source Serif 4',Georgia,serif;font-size:1.05rem;font-weight:600;color:#111418;margin:1.75rem 0 .75rem;">
+      Limitations
+    </h3>
+
+    <ul class="bullets">
+      <li>
+        <strong>Resolution:</strong> Sentinel-2's 10–20 m pixels are coarse
+        relative to Kochi's dense mixed land cover; single pixels often
+        straddle multiple surfaces.
+      </li>
+      <li>
+        <strong>Single-season comparison:</strong> the analysis uses only the
+        Jan–Mar dry season. Monsoon-driven water dynamics are invisible here.
+        A multi-season comparison would round out the picture.
+      </li>
+      <li>
+        <strong>Ward-level statistics are means:</strong> mean index change
+        per ward is sensitive to outliers, ignores spatial structure, and
+        cannot distinguish "one big project" from "city-wide densification."
+        It should be read as a directional indicator, not a precise estimate.
+      </li>
+      <li>
+        <strong>Excluded wards:</strong> three wards (Cheralai, Edakochi South,
+        Kathrukadavu) are missing due to polygon errors in the source file.
+        Their real-world area is not reflected in this analysis.
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= 07 · METHODS ================= -->
+  <section>
+    <h2><span class="num">07</span>Methods &amp; Data</h2>
+
+    <div class="methods" style="background:#fafbfc;border:1px solid var(--line);border-radius:6px;padding:1.5rem 1.75rem;font-size:.92rem;line-height:1.85;color:#3a3f45;">
+      <strong style="display:inline-block;min-width:130px;color:#111418;">Imagery:</strong>
+      Copernicus Sentinel-2 Surface Reflectance Harmonized (Level-2A),
+      bands B3 (green), B4 (red), B8 (NIR), B11 (SWIR-1).<br>
+      <strong style="display:inline-block;min-width:130px;color:#111418;">Cloud masking:</strong>
+      Scene Classification Layer (SCL); pixels marked as cloud, shadow,
+      cirrus, or snow are excluded.<br>
+      <strong style="display:inline-block;min-width:130px;color:#111418;">Window:</strong>
+      1 January – 31 March for both 2018 and 2025 (dry season in Kerala).<br>
+      <strong style="display:inline-block;min-width:130px;color:#111418;">Compositing:</strong>
+      Pixel-wise median of all cloud-free scenes (25 scenes in 2018;
+      53 scenes in 2025).<br>
+      <strong style="display:inline-block;min-width:130px;color:#111418;">Indices:</strong>
+      NDBI = (B11 − B8) / (B11 + B8);
       MNDWI = (B3 − B11) / (B3 + B11).<br>
-      <strong>Software:</strong> Google Earth Engine (Python API), geemap, PIL.
+      <strong style="display:inline-block;min-width:130px;color:#111418;">Change:</strong>
+      Per-pixel difference (2025 − 2018) for each index.<br>
+      <strong style="display:inline-block;min-width:130px;color:#111418;">Software:</strong>
+      Google Earth Engine (Python API), geemap, GeoPandas, PIL.<br>
+      <strong style="display:inline-block;min-width:130px;color:#111418;">Source data:</strong>
+      Corporation boundary and ward polygons from the
+      <a href="https://github.com/datameet/Municipal_Spatial_Data/tree/master/Kochi" target="_blank">Datameet Municipal Spatial Data repository</a>.
     </div>
   </section>
 
@@ -485,7 +650,7 @@
     </span>
     <span>
       <a href="https://github.com/nafeesath-k-a" target="_blank">GitHub</a> ·
-      <a href="mailto:hs26d001@iitp.ac.in">Email</a>
+      <a href="mailto:hs26d001@iittp.ac.in">Email</a>
     </span>
   </div>
 
